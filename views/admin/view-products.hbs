@@ -1,0 +1,68 @@
+<section class="pt-5">
+    <div class="container">
+      <div class="row">
+        <a href="admin/add-product" class="btn btn-outline-success ml-auto">Add Product</a>
+      </div>
+<table class="table mt-5" id="customers">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Description</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each products}}
+    <tr>
+      <td><img style="width: 50px;height: 50px;" src="/product-images/{{this._id}}.jpg"></td>
+      <td>{{this.name}}</td>
+      <td>₹{{this.price}}</td>
+      <td>{{this.description}}</td>
+      <td><a href="/admin/edit-product/{{this._id}}" class="btn btn-primary">Edit</a>
+<a href="/admin/delete-product/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are You Want To Delete {{this.name}} ?')">Delete</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>
+
+<footer class="footer text-center py-3 bg-primary text-white">
+    <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Developed by Rashid Machingal</a>
+</footer>
+
+
+<style>
+  .footer{
+    margin-top: 50px;
+  }
+
+  #customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  }
+
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+
+  #customers th {
+  padding-top: 12px;              
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+  }
+
+  #customers {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  }
+
+  .cart-item-count:hover{
+    cursor: pointer;
+  }
+</style>
+

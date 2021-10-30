@@ -1,0 +1,63 @@
+<section class="mt-5 item-align-center justify-content-center">
+  <div class="container">
+      <div class="row justify-content-center ">
+        {{#each products}}
+        <div class="col-lg-3 col-md-4">
+          <div class="custom-card card overflow-hidden p-2 bd-highlight ml-3 mb-3">
+            <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{this.name}}</h5>
+              <h4 class="card-price">₹{{this.price}}</h4>
+              <p class="card-text">{{this.description}}</p>
+              <button onclick="addToCart('{{this._id}}')" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Add To Cart</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+  </div>
+</section>
+
+<footer class="mt-5 footer-copyright text-center py-3 bg-primary text-white">
+    <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Developed by Rashi Leo</a>
+  </footer>
+
+{{!-- custom css --}}
+
+
+<style>
+    .image-container img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .custom-card{
+      width: 17rem;
+      <!--======= background-color: rgb(210, 223, 228); ======= -->
+    }
+
+    .custom-card img:hover{
+      transform: scale(1.1);
+    }
+    .custom-card:hover{
+      transform: scale(1);
+    }
+    
+     @media only screen and (max-width: 600px) {
+   .custom-card{
+    <!--======= background-color: rgb(210, 223, 228); ======= -->
+    width: 23rem;
+  }
+
+    .custom-card{
+        width: 320px;
+    }
+
+    {{!-- .card-img-top:hover{
+        transform: scale(1.1);
+    } --}}
+
+    .overflow-hidden{
+        overflow: hidden;
+    }
+</style>
