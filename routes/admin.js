@@ -4,7 +4,6 @@ var router = express.Router();
 var productHelpers = require('../helpers/product-helpers');
 const userHelpers = require('../helpers/user-helpers');
 
-
 const verifyLogin = (req, res, next) => {
   if (req.session.adminLoggedIn) {
     next()
@@ -124,6 +123,14 @@ router.post('/edit-product/:id', (req, res) => {
 })
 
 // ==== edit product end ===== //
+
+
+// ==== product serach start  ===== //
+
+router.get('/search/:name',(req,res)=>{
+  var regex= new RegExp(req.params.name,'i');
+  
+})
 
 
 module.exports = router;
