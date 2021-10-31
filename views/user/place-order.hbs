@@ -1,89 +1,95 @@
+<!-- ======= place order start =======-->
+
 <section class="pt-5">
-    <div class="container">
-        <form action="" id="checkout-form">
-            <div class="row">
-                <div class="col-md-6">
-                      <div class="text-center mb-4">
-                        <h2>Enter Delivery Details</h2>
-                    </div>
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Pincode</label>
-                        <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Enter Pincode">
-                        <input type="text" name="userId" value="{{user._id}}" hidden>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Mobile</label>
-                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile">
-                    </div>
-                </div>
-
-                <div class="ml-5 mt-5 col-md-4">
-            <div class="card" style="width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Total Amount ₹{{total}}</h5>
-                <hr>
-                <h5>Payment Method</h5>
-                <br>
-                <label class="radio-inline">
-                  <input type="radio" name="payment-method" value="COD" checked>Cash On Delivery
-                </label>
-                <label class="radio-inline mt-2">
-                  <input type="radio" name="payment-method" value="Online">Online Payment
-                </label>
-                <br>
-                <button href="#" type="submit" class="btn btn-primary" style="width: 100%;">Checkout</button>
-                <br>
-              </div>
-            </div>
+  <div class="container">
+    <form action="" id="checkout-form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="text-center mb-4">
+            <h2>Enter Delivery Details</h2>
+          </div>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Full Name">
           </div>
 
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address">
+          </div>
+
+          <div class="form-group">
+            <label>Pincode</label>
+            <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Enter Pincode">
+            <input type="text" name="userId" value="{{user._id}}" hidden>
+          </div>
+
+          <div class="form-group">
+            <label>Mobile</label>
+            <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile">
+          </div>
+        </div>
+
+        <div class="ml-5 mt-5 col-md-4">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title">Total Amount ₹{{total}}</h5>
+              <hr>
+              <h5>Payment Method</h5>
+              <br>
+              <label class="radio-inline">
+                <input type="radio" name="payment-method" value="COD" checked>Cash On Delivery
+              </label>
+              <label class="radio-inline mt-2">
+                <input type="radio" name="payment-method" value="Online">Online Payment
+              </label>
+              <br>
+              <button href="#" type="submit" class="btn btn-primary" style="width: 100%;">Checkout</button>
+              <br>
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
 </section>
 
 <footer class="footer text-center py-3 bg-primary text-white">
-    <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Created and Developed by Rashi Leo</a>
+  <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Created and Developed by Rashi Leo</a>
 </footer>
 
+<!-- ======= place order end =======-->
+
 <style>
-  .footer{
+  .footer {
     margin-top: 317px;
   }
 </style>
 
-{{!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> --}}
 
+<!-- ======= place order style start =======-->
 
 <style>
-    input[type=radio]{
-        width: 20px;
-        height: 20px;
-    }
+  input[type=radio] {
+    width: 20px;
+    height: 20px;
+  }
 
-    label.radio-inline{
-        display: flex;
-        align-items: center;
-    }
+  label.radio-inline {
+    display: flex;
+    align-items: center;
+  }
 
-    .checkout{
-        border: 1px solid;
-        border-radius: 3px;
-        padding: 30px;
-    }
+  .checkout {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 30px;
+  }
 
-    .payment{
-        padding-bottom: 16px;
-    }
+  .payment {
+    padding-bottom: 16px;
+  }
 </style>
+
+<!-- ======= place order style end =======-->

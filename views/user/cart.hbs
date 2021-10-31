@@ -1,41 +1,47 @@
+<!-- ======= user cart start =======-->
+
 {{#if products}}
 <section class="pt-5">
-    <div class="container">
-      <div class="row">
-        <table class="table mt-5" id="customers">
-  <thead>
-    <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Option</th>
-    </tr>
-  </thead>
-  <tbody>
-      {{#each products}}
-    <tr>
-      <td><img style="width: 50px;height: 50px;" src="/product-images/{{this.product._id}}.jpg"></td>
-      <td>{{this.product.name}}</td>
-      <td>₹{{this.product.price}}</td>
-      <td>
-          <button class="cart-item-count btn btn-info mr-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
-          <span id="{{this.product._id}}">{{this.quantity}}</span>
-          <button class="cart-item-count btn btn-info ml-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
-      </td>
-      <td>
-         <a class="cart-item-count" onclick="removeProductFromCart('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)"><i class="fas fa-trash-alt"></i> Remove</a>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+  <div class="container">
+    <div class="row">
+      <table class="table mt-5" id="customers">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each products}}
+          <tr>
+            <td><img style="width: 50px;height: 50px;" src="/product-images/{{this.product._id}}.jpg"></td>
+            <td>{{this.product.name}}</td>
+            <td>₹{{this.product.price}}</td>
+            <td>
+              <button class="cart-item-count btn btn-info mr-3"
+                onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+              <span id="{{this.product._id}}">{{this.quantity}}</span>
+              <button class="cart-item-count btn btn-info ml-3"
+                onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+            </td>
+            <td>
+              <a class="cart-item-count"
+                onclick="removeProductFromCart('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)"><i
+                  class="fas fa-trash-alt"></i> Remove</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
     <div class="float-right pr-3">
       <h5 class="float-left mr-5 ml-auto">Total: Rs. <span id="total">{{cartValue}}</span></h5><br>
       <a href="/place-order" class="btn btn-success mt-3 float-right" style="width: 100%;"><b>Place Order</b></a>
     </div>
-    </div>
+  </div>
 </section>
 {{else}}
 
@@ -44,96 +50,105 @@
 {{/if}}
 
 <footer class="footer text-center py-3 bg-primary text-white">
-    <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Created and Developed by Rashi Leo</a>
+  <a href="https://github.com/rashidmachingal/" class="text-white">© 2021 Created and Developed by Rashi Leo</a>
 </footer>
 
 <style>
-  .footer{
+  .footer {
     margin-top: 475px;
   }
 </style>
 
 
-<script> 
-  function changeQuantity(cartId,proId,userId,count){
-    let quantity=parseInt(document.getElementById(proId).innerHTML)
-    count=parseInt(count)
+<script>
+  function changeQuantity(cartId, proId, userId, count) {
+    let quantity = parseInt(document.getElementById(proId).innerHTML)
+    count = parseInt(count)
 
     $.ajax({
-      url:'change-product-quantity',
-      data:{
-        user:userId,
-        cart:cartId,
-        product:proId,
-        count:count,
-        quantity:quantity
+      url: 'change-product-quantity',
+      data: {
+        user: userId,
+        cart: cartId,
+        product: proId,
+        count: count,
+        quantity: quantity
       },
-      method:'post',
-      success:(response)=>{
-        if(response.removeProduct){
+      method: 'post',
+      success: (response) => {
+        if (response.removeProduct) {
           alert("Product removed from cart")
           location.reload()
-        }else{
-          document.getElementById(proId).innerHTML=quantity+count
-          document.getElementById('total').innerHTML=response.total
+        } else {
+          document.getElementById(proId).innerHTML = quantity + count
+          document.getElementById('total').innerHTML = response.total
         }
       }
     })
   }
 </script>
 
-<script> 
-  function removeProductFromCart(cartId,proId,userId,count){
-    let quantity=1
-    count=-1
+<script>
+  function removeProductFromCart(cartId, proId, userId, count) {
+    let quantity = 1
+    count = -1
 
     $.ajax({
-      url:'remove-product-from-cart',
-      data:{
-        user:userId,
-        cart:cartId,
-        product:proId,
-        count:count,
-        quantity:quantity
+      url: 'remove-product-from-cart',
+      data: {
+        user: userId,
+        cart: cartId,
+        product: proId,
+        count: count,
+        quantity: quantity
       },
-      method:'post',
-      success:(response)=>{
-        if(response.removeProduct){
+      method: 'post',
+      success: (response) => {
+        if (response.removeProduct) {
           alert("Product removed from cart")
           window.location = "/cart";
-        }else{
-          document.getElementById(proId).innerHTML=quantity+count
-          document.getElementById('total').innerHTML=response.total
+        } else {
+          document.getElementById(proId).innerHTML = quantity + count
+          document.getElementById('total').innerHTML = response.total
         }
       }
     })
   }
 </script>
 
+<!-- ======= user cart end =======-->
+
+<!-- ======= cart style start =======-->
+
 <style>
-  #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
   }
 
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
 
   #customers th {
-  padding-top: 12px;              
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
   }
 
   #customers {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
   }
 
-  .cart-item-count:hover{
+  .cart-item-count:hover {
     cursor: pointer;
   }
 </style>
+
+<!-- ======= cart style end =======-->

@@ -1,58 +1,71 @@
+<!-- ======= orders start =======-->
+
 <section class="mt-5">
   <div class="container">
     <div class="row">
       <table id="customers">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Address</th>
-      <th>Price</th>
-      <th>Payment</th>
-      <th>Status</th>
-      <th>Products</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each orders}}
-    <tr>
-      <td>{{this.deliveryDetails.date}}</td>
-      <td>{{this.deliveryDetails.name}}<br>{{this.deliveryDetails.address}}<br>Pin.{{this.deliveryDetails.pincode}} <br> {{this.deliveryDetails.mobile}}</td>
-      <td>₹{{this.totalAmount}}</td>
-      <td>{{this.paymentMethod}}</td>
-      <td>{{this.status}}</td>
-      <td><a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a></td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th>Products</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+          <tr>
+            <td>{{this.deliveryDetails.date}}</td>
+            <td>
+              {{this.deliveryDetails.name}}<br>{{this.deliveryDetails.address}}<br>Pin.{{this.deliveryDetails.pincode}}
+              <br> {{this.deliveryDetails.mobile}}</td>
+            <td>₹{{this.totalAmount}}</td>
+            <td>{{this.paymentMethod}}</td>
+            <td>{{this.status}}</td>
+            <td><a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
 
+<!-- ======= orders end =======-->
+
+<!-- ======= orders style start =======-->
+
 <style>
-  #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
   }
 
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
 
   #customers th {
-  padding-top: 12px;              
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
   }
 
   #customers {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
   }
 
-  .cart-item-count:hover{
+  .cart-item-count:hover {
     cursor: pointer;
   }
 </style>
+
+<!-- ======= orders style end =======-->

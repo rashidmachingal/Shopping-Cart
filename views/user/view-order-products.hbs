@@ -1,119 +1,72 @@
+<!-- ======= user view order products end =======-->
+
 {{#if products}}
 <section class="pt-5">
-    <div class="container">
-      <div class="row">
-        <table class="table mt-5" id="customers">
-  <thead>
-    <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-      {{#each products}}
-    <tr>
-      <td><img style="width: 50px;height: 50px;" src="/product-images/{{this.product._id}}.jpg"></td>
-      <td>{{this.product.name}}</td>
-      <td>₹{{this.product.price}}</td>
-      <td>
-          <span id="{{this.product._id}}">{{this.quantity}}</span>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+  <div class="container">
+    <div class="row">
+      <table class="table mt-5" id="customers">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each products}}
+          <tr>
+            <td><img style="width: 50px;height: 50px;" src="/product-images/{{this.product._id}}.jpg"></td>
+            <td>{{this.product.name}}</td>
+            <td>₹{{this.product.price}}</td>
+            <td>
+              <span id="{{this.product._id}}">{{this.quantity}}</span>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
     </div>
-    </div>
+  </div>
 </section>
+
 {{else}}
-
-<h1 class="text-center mt-5">No Items Addedd In Cart</h1>
-
+<h1 class="text-center mt-5">No Orders Placed</h1>
 {{/if}}
 
+<!-- ======= user view order products end =======-->
 
-<script> 
-  function changeQuantity(cartId,proId,userId,count){
-    let quantity=parseInt(document.getElementById(proId).innerHTML)
-    count=parseInt(count)
-
-    $.ajax({
-      url:'change-product-quantity',
-      data:{
-        user:userId,
-        cart:cartId,
-        product:proId,
-        count:count,
-        quantity:quantity
-      },
-      method:'post',
-      success:(response)=>{
-        if(response.removeProduct){
-          alert("Product removed from cart")
-          location.reload()
-        }else{
-          document.getElementById(proId).innerHTML=quantity+count
-          document.getElementById('total').innerHTML=response.total
-        }
-      }
-    })
-  }
-</script>
-
-<script> 
-  function removeProductFromCart(cartId,proId,userId,count){
-    let quantity=1
-    count=-1
-
-    $.ajax({
-      url:'remove-product-from-cart',
-      data:{
-        user:userId,
-        cart:cartId,
-        product:proId,
-        count:count,
-        quantity:quantity
-      },
-      method:'post',
-      success:(response)=>{
-        if(response.removeProduct){
-          alert("Product removed from cart")
-          window.location = "/cart";
-        }else{
-          document.getElementById(proId).innerHTML=quantity+count
-          document.getElementById('total').innerHTML=response.total
-        }
-      }
-    })
-  }
-</script>
+<!-- ======= user view order products style start =======-->
 
 <style>
-  #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+  #customers td,
+  #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
   }
 
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 
 
   #customers th {
-  padding-top: 12px;              
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
   }
 
   #customers {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
   }
 
-  .cart-item-count:hover{
+  .cart-item-count:hover {
     cursor: pointer;
   }
 </style>
+
+<!-- ======= user view order products style end =======-->
