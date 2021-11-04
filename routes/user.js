@@ -236,4 +236,19 @@ router.all('/search',(req,res)=>{
 
 // ==== search products end ==== //
 
+// ==== get categories start ==== //
+
+router.all('/category',(req,res)=>{
+
+  let categoryName = req.query.category;
+
+  productHelpers.getAllProducts().then((products)=>{
+    let filterData = products.filter((data)=> data.category === categoryName);
+    res.render('user/search-data', {filterData});
+  })
+
+})
+
+// ==== get categories end   ==== //
+
 module.exports = router;
