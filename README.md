@@ -8,7 +8,14 @@ This is a Sample E-Commerce Web Application, Built with Node.js, Express, MongoD
 - Remove Product from Cart
 - Product Increment and Decrement
 - Product Search
+- Product Categories Section
 - Payment Method  : Cash on Delivery, Online Payment
 - Payment Gateway : Razorpay
 - Admin Login
 - Admin Product Management System
+
+## Dependencies
+npm install
+
+## How to start
+nodemon bin/www
