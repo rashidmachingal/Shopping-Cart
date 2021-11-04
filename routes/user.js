@@ -16,20 +16,20 @@ const verifyLogin = (req, res, next) => {
 
 // ==== home page start ===== //
 
-router.get('/', async function (req, res, next) {
-  let user = req.session.user
-  let cartCount = null
-  if (req.session.user) {
-    cartCount = await userHelpers.getCartCount(req.session.user._id)
-  }
+router.get('/', async (req, res, next) => {
+    let user = req.session.user;
+    let cartCount = null;
+    if (req.session.user) {
+      cartCount = await userHelpers.getCartCount(req.session.user._id);
+    }
 
-  console.log(user);
+    console.log(user);
 
-  productHelpers.getAllProducts().then((products) => {
-    res.render('user/view-products', { products, user, cartCount });
-  })
+    productHelpers.getAllProducts().then((products) => {
+      res.render('user/view-products', { products, user, cartCount });
+    });
 
-});
+  });
 
 // ==== home page end ===== //
 
@@ -219,5 +219,21 @@ router.get('/view-order-products/:id', async (req, res) => {
 })
 
 // ==== veiw order products end ===== //
+
+
+// ==== search products start ==== //
+
+router.all('/search',(req,res)=>{
+
+  let searchTerm = req.query.name;
+
+  productHelpers.getAllProducts().then((products)=>{
+    let filterData = products.filter((data)=> data.name === searchTerm);
+    res.render('user/search-data', {filterData});
+  })
+
+})
+
+// ==== search products end ==== //
 
 module.exports = router;
