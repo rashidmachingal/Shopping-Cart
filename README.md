@@ -14,7 +14,7 @@ This is a Sample E-Commerce Web Application, Built with Node.js, Express, MongoD
 - Admin Login
 - Admin Product Management System
 
-## Dependencies
+## Install Dependencies
 npm install
 
 ## How to start
