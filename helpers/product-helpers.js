@@ -81,7 +81,13 @@ module.exports={
                 resolve({status:false})
             }
         })
+    },
+
+    getSearchResult:(searchQuery)=>{
+        return new Promise(async(resolve,reject)=>{
+            let sercheResult = await db.get().collection(collection.PRODUCT_COLLECTIONS).find({name:searchQuery}).toArray()
+            resolve(sercheResult)
+        })
     }
 
 }
-

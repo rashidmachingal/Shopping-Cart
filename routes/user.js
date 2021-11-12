@@ -223,16 +223,16 @@ router.get('/view-order-products/:id', async (req, res) => {
 
 // ==== search products start ==== //
 
-router.all('/search',(req,res)=>{
+// router.all('/search',(req,res)=>{
 
-  let searchTerm = req.query.name;
+//   let searchTerm = req.query.name;
 
-  productHelpers.getAllProducts().then((products)=>{
-    let filterData = products.filter((data)=> data.name === searchTerm);
-    res.render('user/search-data', {filterData});
-  })
+//   productHelpers.getAllProducts().then((products)=>{
+//     let filterData = products.filter((data)=> data.name === searchTerm);
+//     res.render('user/search-data', {filterData});
+//   })
 
-})
+// })
 
 // ==== search products end ==== //
 
@@ -250,5 +250,28 @@ router.all('/category',(req,res)=>{
 })
 
 // ==== get categories end   ==== //
+
+
+
+
+
+// ==== new search start ==== //
+
+router.all('/search',(req,res)=>{
+
+  let searchTerm = req.query.name;
+  let regex = new RegExp(searchTerm,'i');
+
+  productHelpers.getSearchResult(regex).then((searchResult)=>{
+    console.log("WORKANU MONU",searchResult);
+    res.render('user/search-data', {searchResult});
+  })
+
+})
+
+
+
+// Assign route
+
 
 module.exports = router;
